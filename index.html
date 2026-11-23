@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Asesmen Informatika Kelas X - 110 Soal</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23171717'/%3E%3Cpath d='M32 12 L48 18 V30 C48 41 41 49 32 53 C23 49 16 41 16 30 V18 Z' fill='white'/%3E%3Cpath d='M24 32 L30 38 L41 26' fill='none' stroke='%23171717' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" type="image/svg+xml">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:system-ui,Segoe UI,Arial,sans-serif;color:#111;padding:18px;background:linear-gradient(135deg,#f4f4f5,#fff 50%,#e4e4e7);background-attachment:fixed;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+input{-webkit-user-select:text;user-select:text}
+body::before,body::after,html::before{content:"";position:fixed;border-radius:50%;filter:blur(70px);z-index:-1;pointer-events:none;animation:fl2 14s ease-in-out infinite alternate}
+body::before{width:44vmax;height:44vmax;background:#262626;opacity:.3;top:-12vmax;left:-10vmax}
+body::after{width:40vmax;height:40vmax;background:#737373;opacity:.4;bottom:-12vmax;right:-8vmax;animation-delay:-6s}
+html::before{width:28vmax;height:28vmax;background:#a3a3a3;opacity:.55;top:38%;left:55%;animation-duration:17s}
+@keyframes fl2{to{transform:translate(8vmax,6vmax) scale(1.15)}}
+.card{max-width:760px;margin:0 auto;background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(26px) saturate(160%);backdrop-filter:blur(26px) saturate(160%);border:1px solid rgba(255,255,255,.85);border-radius:26px;padding:28px;box-shadow:0 10px 40px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.95);animation:pop .45s ease}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+h1{font-size:1.6rem;margin:0 0 4px;color:#111;letter-spacing:-.02em}
+.sub{color:#525252;margin:0 0 16px}
+label{display:block;font-weight:700;margin:14px 0 5px}
+input{width:100%;padding:12px 14px;border:1px solid rgba(0,0,0,.14);border-radius:14px;font-size:1rem;color:#111;background:rgba(255,255,255,.5);box-shadow:inset 0 1px 3px rgba(0,0,0,.06);transition:.2s}
+input::placeholder{color:#8a8a8a}
+input:focus{outline:0;border-color:#111;background:rgba(255,255,255,.85);box-shadow:0 0 0 4px rgba(0,0,0,.08)}
+button{cursor:pointer;border:1px solid rgba(255,255,255,.3);border-radius:14px;padding:12px 20px;font-size:1rem;font-weight:600;color:#fff;background:rgba(17,17,17,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 4px 14px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.25);transition:.2s}
+button:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.25)}button:active{transform:scale(.97)}
+button.alt{background:rgba(255,255,255,.55);color:#111;border-color:rgba(255,255,255,.9);box-shadow:0 4px 14px rgba(0,0,0,.1),inset 0 1px 0 #fff}
+button.fl{background:rgba(255,255,255,.4);color:#111;border:1px dashed #111;box-shadow:none}button.fl.on{background:rgba(0,0,0,.14);border-style:solid}
+button:disabled{opacity:.35;cursor:default}.wide{width:100%;margin-top:6px}.hide{display:none}
+[hidden]{display:none !important}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.chip{background:rgba(255,255,255,.6);color:#111;border:1px solid rgba(255,255,255,.9);box-shadow:0 2px 8px rgba(0,0,0,.08);border-radius:99px;padding:5px 13px;font-weight:600;font-size:.85rem}
+.bar{height:8px;background:rgba(0,0,0,.09);border-radius:9px;margin:12px 0 20px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.1)}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#404040,#111);border-radius:9px;transition:width .4s}
+.qbox{animation:pop .3s ease}.qn{font-size:.78rem;font-weight:700;letter-spacing:.1em;color:#525252}
+h2{font-size:1.15rem;line-height:1.5;margin:4px 0 12px;color:#111}
+.opt{display:flex;gap:12px;align-items:center;width:100%;text-align:left;margin:9px 0;background:rgba(255,255,255,.5);color:#111;border:1px solid rgba(255,255,255,.9);border-radius:16px;font-weight:500;box-shadow:0 4px 14px rgba(0,0,0,.08),inset 0 1px 0 #fff}
+.opt b{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.08);transition:.2s}
+.opt:hover:not(.on){background:rgba(255,255,255,.8);border-color:#111}
+.opt.on{border-color:#111;background:rgba(255,255,255,.9);box-shadow:0 0 0 1px #111,0 10px 26px rgba(0,0,0,.22);transform:translateX(6px)}
+.opt.on b{background:#111;color:#fff}
+.nav{display:flex;justify-content:space-between;gap:8px;margin:16px 0}
+.grid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin:10px 0 12px}
+.grid button{padding:7px 0;font-size:.8rem;font-weight:600;background:rgba(255,255,255,.5);color:#404040;border:1px solid rgba(0,0,0,.12);border-radius:10px;box-shadow:inset 0 1px 0 #fff}
+.grid button.done{background:rgba(17,17,17,.88);border-color:#111;color:#fff;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.grid button.flag{background:repeating-linear-gradient(45deg,rgba(255,255,255,.7),rgba(255,255,255,.7) 4px,rgba(0,0,0,.14) 4px,rgba(0,0,0,.14) 8px);border:1px dashed #111;color:#111}
+.grid button.cur{outline:2px solid #111;outline-offset:2px;transform:scale(1.1)}
+.lg{display:flex;flex-wrap:wrap;gap:12px;font-size:.78rem;color:#525252}.lg span:before{content:"";display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;background:var(--c);border:var(--b,1px solid #8a8a8a);vertical-align:-1px}
+.res{text-align:center}.score{font-size:5rem;font-weight:900;line-height:1;color:#111;letter-spacing:-.04em;text-shadow:0 6px 24px rgba(0,0,0,.25)}
+.pred{display:inline-block;font-size:1.8rem;font-weight:800;border:1px solid rgba(255,255,255,.7);border-radius:16px;padding:6px 26px;margin:12px 0;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 8px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.5)}
+.A{background:rgba(17,17,17,.88);color:#fff}.B{background:rgba(82,82,82,.85);color:#fff}.C{background:rgba(255,255,255,.7);color:#111;border-color:#111}
+table{width:100%;border-collapse:collapse;margin:14px 0;text-align:left}td,th{padding:9px;border-bottom:1px solid rgba(0,0,0,.1)}th{color:#525252;font-weight:600}
+#alarm{position:fixed;inset:0;z-index:99;display:grid;place-items:center;padding:16px;background:#fff;animation:fl .4s steps(1) infinite alternate}
+@keyframes fl{to{background:#111}}#alarm.hide{display:none}
+.ab{background:rgba(255,255,255,.7);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border:2px solid #111;border-radius:26px;padding:28px;max-width:420px;width:100%;text-align:center;color:#111;box-shadow:0 10px 40px rgba(0,0,0,.4)}
+.si{width:76px;height:76px;margin:0 auto 10px;border-radius:50%;background:#111;color:#fff;font-size:3rem;font-weight:900;display:grid;place-items:center;animation:sh .3s infinite alternate}
+@keyframes sh{from{transform:rotate(-10deg)}to{transform:rotate(10deg)}}.err{color:#111;font-weight:700;min-height:1.3em}
+.dd{position:relative}.ddm{margin-top:6px;animation:pop .25s ease}
+.ddi{display:flex;justify-content:space-between;width:100%;text-align:left;margin:7px 0 0;background:rgba(255,255,255,.55);color:#111;border:1px solid rgba(255,255,255,.9);box-shadow:0 4px 14px rgba(0,0,0,.1),inset 0 1px 0 #fff}
+.ddi:hover:not(:disabled){border-color:#111}
+#s2{max-width:1120px}
+.left{background:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.9);border-radius:20px;padding:20px;margin-bottom:6px;box-shadow:0 6px 24px rgba(0,0,0,.08),inset 0 1px 0 #fff}
+@media(min-width:900px){.split{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}.left{padding:36px;margin:0;display:flex;flex-direction:column;justify-content:center}.left h2{font-size:clamp(1.5rem,2.3vw,2.2rem);line-height:1.4;margin-top:12px}.left .qn{font-size:.9rem}.opt{padding:14px 20px}}
+@media(max-width:520px){.grid{grid-template-columns:repeat(8,1fr)}.card{padding:18px}.nav{gap:6px}.nav button{flex:1;min-width:0;padding:12px 6px;font-size:.85rem}}
+
+/* Kamera pengawas */
+.kam-box{position:fixed;right:14px;bottom:14px;width:170px;padding:6px;z-index:50;border-radius:20px;background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 30px rgba(0,0,0,.18)}
+#preview{width:100%;display:block;border-radius:14px;background:#000;transform:scaleX(-1)}
+.kam-ov{position:fixed;inset:0;z-index:98;display:grid;place-items:center;padding:16px;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.kam-ov .ab{max-width:520px}
+.kam-ov img{display:block;width:min(80vw,300px);margin:0 auto 12px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.15)}
+.kam-ov p{color:#111;font-weight:600;margin:0 0 16px}
+@media(max-width:520px){.kam-box{width:120px}}
+</style></head><body>
+
+<div class="card" id="s1">
+<h1>Asesmen Sumatif Informatika</h1><p class="sub">Kelas X - Semester 1 | 110 soal pilihan ganda</p>
+<label>Nama Lengkap</label><input id="nama" placeholder="Nama kamu">
+<label>Kelas</label><input id="kelas" placeholder="Contoh: X-1">
+<p class="sub" style="margin-top:14px">Materi: Malware &amp; Pemilahan Data, Von Neumann &amp; IPO, Sorting-Stack-Queue, Analisis &amp; Validasi Data, Sistem Komputer. Kamera harus aktif selama ujian.</p>
+<button class="wide" id="btnMulai" onclick="mulai()">Mulai Mengerjakan</button></div>
+
+<div class="card hide" id="s2">
+<div class="top"><b id="info"></b><span class="chip" id="stat"></span></div><div class="bar"><i id="pb"></i></div>
+<div class="split"><div class="qbox left" id="qb"><div class="qn" id="no"></div><h2 id="q"></h2></div>
+<div class="right"><div id="opts"></div>
+<div class="nav"><button class="alt" id="bp" onclick="go(cur-1)">← Sebelumnya</button><button class="fl" id="bf" onclick="flg()">Ragu-ragu</button><button id="bn" onclick="go(cur+1)">Berikutnya →</button></div>
+<div class="grid" id="grid"></div>
+<div class="lg"><span style="--c:#fff">Belum</span><span style="--c:#111;--b:1px solid #111">Sudah dijawab</span><span style="--c:repeating-linear-gradient(45deg,#fff,#fff 2px,#d4d4d4 2px,#d4d4d4 4px);--b:1px dashed #111">Ragu-ragu</span><span style="--c:#fff;--b:2px solid #111">Sedang dibuka</span></div>
+<button class="wide" style="margin-top:16px" onclick="selesai()">Selesaikan Ujian</button></div></div></div>
+
+<div class="card res hide" id="s3">
+<h1>Hasil Asesmen</h1><p id="who" class="sub"></p>
+<div class="score" id="sc">0</div><div class="pred" id="pr"></div><p id="ben"></p>
+<table id="tb"></table>
+<button class="wide" onclick="pdf()">Download PDF Hasil</button>
+<p class="sub" style="margin:10px 0">Setelah PDF terunduh, klik tombol di bawah lalu upload file PDF-nya ke folder pengumpulan.</p>
+<button class="wide" onclick="window.open('https://drive.google.com/drive/folders/1I-0gwh8H7m5pgyFb3fKPTS_Pv4npNoEG?usp=sharing','_blank','noopener')">Kumpulkan ke Google Drive ↗</button></div>
+
+<div id="alarm" class="hide"><div class="ab"><div class="si">!</div>
+<h2 style="font-size:1.5rem;color:#111">KAMU PINDAH TAB!</h2><p id="am"></p>
+<input id="pw" type="password" placeholder="Password dari guru" autocomplete="off"><p class="err" id="pe"></p>
+<button class="wide" onclick="buka()">Lanjutkan</button></div></div>
+
+<!-- Kamera pengawas -->
+<div class="kam-box" id="kameraKecil" hidden><video id="preview" autoplay muted playsinline></video></div>
+<div id="kamOverlay" class="kam-ov" hidden role="alertdialog" aria-modal="true">
+  <div class="ab">
+    <img src="kucing.gif" alt="Kucing yang sedang menyipitkan mata">
+    <h2 style="font-size:1.5rem;color:#111;margin:0 0 8px">Perhatian kamera!</h2>
+    <p id="kamTeks"></p>
+    <button class="wide" id="btnKamOke">Oke, paham</button>
+  </div>
+</div>
+
+<script>
+// Format tiap soal: [topik, pertanyaan, opsi1, opsi2, opsi3, opsi4, indeks jawaban benar (0-3)]
+const TOPIK = [
+  "Malware & Pemilahan Data",
+  "Sistem Komputer: Von Neumann & IPO",
+  "Sorting, Stack & Queue",
+  "Analisis & Validasi Data",
+  "Sistem Komputer Kelas X"
+];
+const SOAL = [
+  [0,"Perangkat lunak yang berpura-pura menjadi aplikasi berguna tetapi diam-diam membuka celah di komputer disebut...","Cookie","Firewall","Antivirus","Trojan",3],
+  [0,"Malware yang dapat menyebar sendiri lewat jaringan tanpa perlu menempel pada file lain adalah...","Worm","Virus","Adware","Ransomware",0],
+  [0,"File dikunci dan muncul permintaan tebusan. Malware ini adalah...","Keylogger","Worm","Ransomware","Trojan",2],
+  [0,"Malware yang merekam setiap ketikan, termasuk kata sandi, disebut...","Rootkit","Spam","Adware","Keylogger",3],
+  [0,"Iklan pop-up terus bermunculan setelah memasang aplikasi gratis dari situs tidak dikenal. Malware yang paling sesuai adalah...","Adware","Ransomware","Rootkit","Worm",0],
+  [0,"Program jahat yang menempel pada file dan ikut aktif saat file dijalankan adalah...","Keylogger","Adware","Virus","Worm",2],
+  [0,"Aplikasi yang diam-diam mencatat kebiasaan browsing lalu mengirimkannya ke pihak lain adalah...","Backup","Ransomware","Spyware","Virus",2],
+  [0,"Malware yang bersembunyi di sistem dengan hak akses tinggi agar sulit dideteksi disebut...","Adware","Rootkit","Patch","Cookie",1],
+  [0,"Tanda paling umum bahwa perangkat mungkin terinfeksi malware adalah...","Perangkat melambat tanpa sebab yang jelas","Ikon aplikasi tersusun rapi","Ponsel terisi daya penuh","Layar tetap mati saat diisi daya",0],
+  [0,"Sebuah pesan mengaku dari layanan resmi dan meminta kamu mengklik tautan. Tindakan paling aman adalah...","Balas dengan kata sandi","Teruskan pesan ke semua teman","Periksa pengirim dan buka situs resmi secara langsung","Klik tautan agar akun tidak ditutup",2],
+  [0,"Informasi yang boleh diketahui siapa saja, seperti nama sekolah, termasuk jenis data...","Pribadi sensitif","Privat","Publik","Rahasia negara",2],
+  [0,"Nomor Induk Kependudukan (NIK) termasuk jenis data...","Publik","Privat","Promosi","Umum",1],
+  [0,"Kata sandi akun email termasuk jenis data...","Berita","Statistik","Publik","Privat",3],
+  [0,"Kode OTP yang dikirim ke ponsel sebaiknya diperlakukan sebagai...","Data publik","Informasi promosi","Data umum","Data privat yang tidak boleh dibagikan",3],
+  [0,"Lokasi rumah yang diunggah ke media sosial saat liburan dapat berisiko karena...","Membuat orang lain tahu di mana rumah kita","Menghapus riwayat","Membuat foto lebih jernih","Memperbesar ukuran file",0],
+  [0,"Sebelum mengunggah dokumen tugas ke forum umum, langkah yang tepat adalah...","Gunakan nama teman tanpa izin","Sertakan kata sandi akun","Periksa dan hapus metadata atau identitas pribadi yang tidak perlu","Cantumkan alamat rumah",2],
+  [0,"Peta publik hanya menampilkan jumlah pengunjung per bulan tanpa nama. Data ini termasuk...","Data agregat yang tidak mengidentifikasi individu","Data privat","Data pribadi sensitif","Kata sandi",0],
+  [0,"Tangkapan layar percakapan pribadi dikirim ke grup tanpa izin. Sikap yang tepat adalah...","Mengunggahnya ke media sosial","Menyimpannya untuk dijual","Menghormati privasi dan tidak menyebarkannya","Meneruskan agar ramai",2],
+  [0,"Mana yang BUKAN termasuk data privat?","Alamat rumah","Nama sekolah","NIK","Nomor rekening",1],
+  [0,"Autentikasi dua langkah berfungsi untuk...","Menambah lapisan verifikasi selain kata sandi","Menghapus malware","Mempercepat koneksi internet","Membuat kata sandi lebih panjang",0],
+  [0,"Jenis malware yang bisa dikendalikan dari jauh dan dipakai menyerang banyak perangkat sekaligus disebut...","Patch","Cookie","Botnet","Backup",2],
+  [0,"Fungsi utama antivirus adalah...","Membuat file lebih besar","Menghapus pembaruan sistem","Menambah iklan di layar","Mendeteksi dan menghapus malware",3],
+  [0,"Pembaruan sistem penting karena...","Menghapus semua aplikasi","Membuat baterai cepat habis","Menambah ukuran wallpaper","Menutup celah keamanan yang bisa dimanfaatkan malware",3],
+  [0,"Phishing adalah...","Penipuan lewat pesan atau situs palsu untuk mencuri data","Program untuk membersihkan cache","Aplikasi pemutar musik","Jenis malware yang mengunci file",0],
+  [0,"Contoh data pribadi yang tergolong sensitif adalah...","Riwayat kesehatan","Profil guru di situs sekolah","Nama sekolah","Jadwal lomba umum",0],
+  [0,"Kata sandi yang paling aman sebaiknya...","Minimal 12 karakter dengan huruf, angka, dan simbol","Berisi tanggal lahir","Sama untuk semua akun","Ditulis di kertas dan ditempel di meja",0],
+  [0,"Saat memakai Wi-Fi publik, sebaiknya kamu...","Menyimpan kata sandi di perangkat orang lain","Menghindari membuka data pribadi karena lalu lintas datamu bisa dipantau","Membagikan kode OTP kepada teman","Membuka data pribadi tanpa ragu",1],
+  [0,"Di antara berikut, mana yang BUKAN termasuk data publik?","Profil resmi guru di situs sekolah","Nomor rekening pribadi","Berita kegiatan resmi sekolah","Nama sekolah",1],
+  [0,"Sebelum membagikan foto orang lain di media sosial, langkah paling tepat adalah...","Langsung unggah karena fotonya bagus","Menandai semua orang di grup","Menambahkan lokasi rumah mereka","Meminta izin orang yang ada di foto",3],
+  [0,"Tanda bahwa akun media sosialmu mungkin diretas adalah...","Ada pembaruan aplikasi","Jumlah pengikut bertambah sedikit","Foto profil terlihat lebih terang","Ada aktivitas masuk atau unggahan yang tidak kamu buat",3],
+
+  [1,"Apa kepanjangan dari CPU?","Central Program Utility","Computer Personal Unit","Central Processor Utility","Central Processing Unit",3],
+  [1,"Apa tugas utama CPU dalam komputer?","Menyimpan data secara permanen","Menyambungkan ke internet","Menampilkan gambar ke layar","Memproses data dan menjalankan instruksi",3],
+  [1,"Pada model Von Neumann, program dan data disimpan di tempat yang sama, yaitu...","Memori","Printer","Mouse","Speaker",0],
+  [1,"Urutan tahapan dasar cara kerja CPU adalah...","Output - Proses - Input","Proses - Input - Output","Input - Proses - Output","Input - Output - Proses",2],
+  [1,"Tahap ketika CPU mengambil instruksi dari memori disebut...","Fetch","Decode","Store","Execute",0],
+  [1,"Tahap ketika CPU membaca dan memahami instruksi disebut...","Store","Fetch","Execute","Decode",3],
+  [1,"Tahap ketika CPU benar-benar menjalankan instruksi disebut...","Decode","Execute","Store","Fetch",1],
+  [1,"Di simulator LMC, kotak ACCUMULATOR berfungsi sebagai...","Tempat menyimpan seluruh program","Tempat robot memegang angka untuk dihitung","Layar hasil akhir","Kotak untuk mengetik angka input",1],
+  [1,"Di simulator LMC, kotak-kotak RAM diibaratkan seperti...","Meja kerja CPU","Loker/kotak penyimpanan data dan perintah","Layar output","Kabel penghubung",1],
+  [1,"Pada LMC, instruksi dengan kode 9xx artinya perintah untuk...","Menghentikan program","Mengurangi angka","Meminta angka dari INPUT","Menjumlahkan angka",2],
+  [1,"Apa fungsi tombol STEP pada simulator LMC?","Menjalankan seluruh program otomatis dan cepat","Menyimpan program ke file","Menjalankan program satu langkah demi satu langkah","Menghapus semua data di RAM",2],
+  [1,"Apa fungsi tombol RUN pada simulator LMC?","Membuka kotak INPUT","Menjalankan program satu langkah saja","Mereset semua kotak RAM ke nol","Menjalankan seluruh program secara otomatis",3],
+  [1,"Bagian CPU yang melakukan perhitungan (tambah/kurang) disebut...","Address Register","Instruction Register","Program Counter","Arithmetic Unit",3],
+  [1,"Program Counter berfungsi untuk menyimpan...","Nama program yang sedang berjalan","Nomor kotak instruksi berikutnya yang akan dibaca","Angka yang diketik di INPUT","Hasil akhir perhitungan",1],
+  [1,"Kegiatan mengetik angka di kotak INPUT pada simulator LMC termasuk tahap...","Validasi","Proses","Input","Output",2],
+  [1,"Hasil akhir yang muncul di kotak OUTPUT termasuk tahap...","Proses","Output","Fetch","Input",1],
+  [1,"Mengapa data yang masuk (input) perlu divalidasi sebelum diproses?","Supaya ukuran file lebih kecil","Supaya hasil proses dan output tidak salah","Supaya tampilan program lebih bagus","Supaya program berjalan lebih cepat",1],
+  [1,"Apa yang mungkin terjadi jika CPU membaca instruksi yang salah atau tidak dikenali?","Program bisa error atau berhenti","Program berjalan lebih cepat","Hasil otomatis menjadi benar","Memori otomatis bertambah",0],
+  [1,"Instruction Register berfungsi menyimpan...","Angka yang diketik siswa","Hasil akhir perhitungan","Kode perintah yang baru saja dibaca CPU","Daftar semua kotak RAM",2],
+  [1,"Mengapa model Von Neumann penting dalam sejarah komputer modern?","Karena menjadi dasar cara kerja hampir semua komputer saat ini","Karena tidak dipakai lagi sekarang","Karena hanya dipakai di kalkulator","Karena hanya berlaku untuk internet",0],
+
+  [2,"Apa yang dimaksud dengan sorting?","Menggandakan data","Menyimpan data","Mengurutkan data","Menghapus data",2],
+  [2,"Data 8, 3, 5, 1 jika diurutkan dari terkecil menjadi...","8, 5, 3, 1","1, 3, 5, 8","3, 1, 8, 5","5, 8, 1, 3",1],
+  [2,"Contoh sorting dalam kehidupan sehari-hari adalah...","Membatalkan tulisan terakhir","Menumpuk buku","Mengantre di kantin","Mengurutkan siswa berdasarkan nilai",3],
+  [2,"Jika nama siswa diurutkan dari A ke Z, data diurutkan secara...","Acak","Ascending","Descending","Random",1],
+  [2,"Stack bekerja menggunakan prinsip...","Random","FILO dan FIFO","LIFO","FIFO",2],
+  [2,"LIFO merupakan singkatan dari...","Last Input First Order","Last In Final Out","Long In First Out","Last In First Out",3],
+  [2,"Contoh Stack dalam kehidupan sehari-hari adalah...","Antrean kasir","Antrean ATM","Antrean bus","Tumpukan piring",3],
+  [2,"Ada tumpukan buku A, B, dan C. Buku C diletakkan paling akhir. Buku mana yang diambil terlebih dahulu?","Semua bersamaan","B","A","C",3],
+  [2,"Operasi untuk memasukkan data ke dalam Stack disebut...","Pop","Push","Dequeue","Queue",1],
+  [2,"Operasi untuk mengeluarkan data dari Stack disebut...","Pop","Sort","Push","Enqueue",0],
+  [2,"Queue bekerja menggunakan prinsip...","Random","FIFO","LILO","LIFO",1],
+  [2,"FIFO merupakan singkatan dari...","Fast In Fast Out","First Input Final Output","First In First Out","First In Final Order",2],
+  [2,"Contoh Queue dalam kehidupan sehari-hari adalah...","Tumpukan piring","Tumpukan buku","Tumpukan pakaian","Antrean kasir",3],
+  [2,"Dalam sebuah antrean terdapat Andi, Budi, Caca, dan Deni. Siapa yang dilayani pertama?","Budi","Andi","Caca","Deni",1],
+  [2,"Operasi untuk memasukkan data ke dalam Queue disebut...","Enqueue","Dequeue","Push","Pop",0],
+  [2,"Operasi untuk mengeluarkan data dari Queue disebut...","Pop","Enqueue","Push","Dequeue",3],
+  [2,"'Orang yang datang lebih dulu ke kantin dilayani lebih dulu.' Konsep yang digunakan adalah...","Stack","Sorting","Searching","Queue",3],
+  [2,"'Tombol Undo membatalkan tindakan yang baru saja dilakukan.' Konsep yang paling sesuai adalah...","Sorting","Searching","Queue","Stack",3],
+  [2,"Manakah pasangan yang benar?","Queue → LIFO","Stack → LIFO","Sorting → FIFO","Stack → FIFO",1],
+  [2,"Pernyataan yang paling tepat adalah...","Sort digunakan untuk membuat antrean","Stack menggunakan prinsip FIFO","Sort digunakan untuk mengurutkan data","Queue menggunakan prinsip LIFO",2],
+
+  [3,"Web scraping adalah teknik untuk...","Menghapus data dari database","Mengambil data dari halaman website secara otomatis menggunakan program","Membuat desain tampilan website","Mengirim email otomatis",1],
+  [3,"Tahap pertama dalam proses web scraping adalah...","Membaca struktur HTML","Menyimpan data ke file","Mengirim permintaan (request) ke server website","Membuat grafik dari data",2],
+  [3,"Library Python untuk mengirim permintaan (request) ke halaman web adalah...","matplotlib","numpy","pandas","requests",3],
+  [3,"Library Python untuk membaca dan mencari elemen dalam struktur HTML adalah...","BeautifulSoup","TensorFlow","OpenCV","NumPy",0],
+  [3,"Status code 200 pada hasil request menandakan bahwa...","Permintaan berhasil dan server merespons dengan baik","Koneksi internet terputus","Server mengalami error","Halaman tidak ditemukan",0],
+  [3,"Proses membaca dan mengubah teks HTML mentah menjadi struktur yang bisa dicari oleh program disebut...","Encoding","Formatting","Parsing","Compiling",2],
+  [3,"Perintah soup.select(\"div.quote\") digunakan untuk...","Menghapus semua tag div","Mengubah warna halaman","Menutup koneksi ke server","Mencari semua elemen HTML dengan tag div dan class quote",3],
+  [3,"File yang berisi aturan tentang bagian halaman mana yang boleh atau tidak boleh diambil datanya adalah...","readme.md","robots.txt","config.json","index.html",1],
+  [3,"Berikut yang termasuk perilaku TIDAK etis dalam web scraping adalah...","Mengirim permintaan secara wajar dan tidak berlebihan","Memeriksa robots.txt sebelum scraping","Mengirim permintaan bertubi-tubi hingga membebani server","Menghormati hak cipta data yang diambil",2],
+  [3,"Format file yang umum untuk menyimpan hasil scraping agar mudah dibuka adalah...",".zip",".csv",".exe",".mp3",1],
+  [3,"Pada kode Python, library untuk menulis data ke file berformat tabel sederhana adalah...","os","sys","csv","math",2],
+  [3,"Jika website dibangun sepenuhnya dengan JavaScript sehingga data muncul setelah halaman dimuat, library requests biasa akan...","Selalu berhasil mengambil semua data","Mengubah data menjadi grafik","Kesulitan mengambil data karena data belum ada saat HTML pertama diterima","Otomatis menunggu data muncul",2],
+  [3,"Validasi data adalah proses...","Mengirim data ke media sosial","Menghapus seluruh data yang telah dikumpulkan","Memeriksa apakah data sudah benar, lengkap, dan masuk akal","Mengubah data menjadi gambar",2],
+  [3,"Data yang muncul lebih dari satu kali pada suatu tabel disebut...","Outlier","Duplikat","Parsing","Missing value",1],
+  [3,"Kolom harga yang kosong karena elemen HTML tidak ditemukan saat scraping merupakan contoh masalah...","Data duplikat","Data konsisten","Data terenkripsi","Data hilang (missing value)",3],
+  [3,"Data tercatat 'umur: 250 tahun' merupakan contoh masalah...","Data tidak wajar (outlier/invalid)","Format tidak konsisten","Data duplikat","Data hilang",0],
+  [3,"Tanggal '12/08/2026' pada satu baris dan '2026-08-12' pada baris lain merupakan contoh masalah...","Format tidak konsisten","Data duplikat","Data hilang","Data tidak wajar",0],
+  [3,"Mengapa data hasil scraping perlu divalidasi sebelum dianalisis?","Supaya ukuran file menjadi lebih kecil","Supaya tampilan data menjadi berwarna","Karena data mentah sering mengandung kesalahan yang bisa menyesatkan analisis","Karena validasi wajib dilakukan oleh hukum",2],
+  [3,"Berikut yang BUKAN salah satu dari 4 hal yang diperiksa saat validasi data adalah...","Kelengkapan","Konsistensi","Kecepatan","Keunikan",2],
+  [3,"Urutan alur kerja web scraping yang benar adalah...","Cari data → simpan data → request → parsing","Request → baca struktur HTML → cari data → simpan data","Parsing → request → simpan data → cari data","Simpan data → request → parsing → cari data",1],
+
+  [4,"Sistem komputer terdiri dari 4 komponen utama, yaitu input, proses, output, dan...","Storage (penyimpanan)","Software (perangkat lunak)","Sinyal","Server",0],
+  [4,"Perangkat yang memasukkan data atau perintah ke dalam komputer disebut perangkat...","Penyimpanan","Output","Input","Proses",2],
+  [4,"Perangkat yang menampilkan atau mengeluarkan hasil pengolahan data disebut perangkat...","Input","Output","Prosesor","Storage",1],
+  [4,"Komponen yang mengolah data menjadi informasi disebut perangkat...","Storage","Input","Proses (Processing)","Output",2],
+  [4,"Alat untuk mengetik huruf, angka, dan perintah ke dalam komputer termasuk perangkat...","Output","Input","Penyimpanan","Proses",1],
+  [4,"Printer termasuk perangkat...","Input","Storage","Output","Proses",2],
+  [4,"Perangkat yang menampilkan hasil pengolahan data berupa tulisan dan gambar kepada pengguna termasuk perangkat...","Output","Input","Storage","Proses",0],
+  [4,"Prosesor (CPU) berperan sebagai...","Otak komputer yang memproses data","Alat menampilkan suara","Alat penyimpan data jangka panjang","Alat memasukkan gambar",0],
+  [4,"Hard disk (HDD) dan SSD termasuk perangkat...","Output","Proses","Input","Storage (penyimpanan)",3],
+  [4,"Perangkat yang memindai dokumen menjadi file digital termasuk perangkat...","Input","Output","Proses","Storage",0],
+  [4,"Perangkat penyimpanan yang mudah dibawa dan dicolokkan melalui port USB termasuk perangkat...","Output","Proses","Input","Storage (penyimpanan eksternal)",3],
+  [4,"Perangkat yang mengeluarkan suara hasil pengolahan komputer, seperti speaker, termasuk perangkat...","Proses, mengolah suara","Storage, menyimpan suara","Input, menangkap suara","Output, mengeluarkan suara",3],
+  [4,"Perangkat yang merekam gambar dan video untuk dikirim ke komputer, seperti webcam, termasuk perangkat...","Output video","Storage video","Proses video","Input gambar/video",3],
+  [4,"Alat yang menampilkan hasil komputer ke layar besar di ruang kelas termasuk perangkat...","Output","Storage","Input","Proses",0],
+  [4,"Perangkat yang menangkap suara dan mengubahnya menjadi data digital termasuk perangkat...","Output, mengeluarkan suara","Storage, menyimpan file","Proses, mengolah sinyal","Input, menangkap suara menjadi data",3],
+  [4,"Perangkat penunjuk yang digerakkan dengan tangan di atas meja untuk memilih objek di layar termasuk perangkat...","Output","Input","Penyimpanan","Proses",1],
+  [4,"RAM (Random Access Memory) berfungsi sebagai...","Alat memasukkan data dari luar","Penyimpanan sementara saat komputer bekerja","Penyimpanan data permanen jangka panjang","Alat menampilkan gambar",1],
+  [4,"Perbedaan RAM dan ROM yang benar adalah...","RAM bersifat sementara (volatile), ROM bersifat permanen (non-volatile)","RAM bersifat permanen, ROM bersifat sementara","RAM dan ROM sama-sama permanen","RAM dan ROM sama-sama sementara",0],
+  [4,"SSD dibandingkan HDD umumnya memiliki keunggulan...","Tidak bisa menyimpan data","Kecepatan akses data lebih tinggi","Harga selalu lebih murah","Hanya berfungsi sebagai alat input",1],
+  [4,"Urutan siklus kerja sistem komputer yang benar adalah...","Storage - Output - Input - Proses","Proses - Input - Storage - Output","Input - Proses - Output - Storage","Output - Proses - Input - Storage",2]
+];
+
+const DRIVE=[["UPRAK_TIK_X1","https://drive.google.com/drive/folders/1axQ7FdpOyhxFaXxSAhmVLipYmPkA15gF?usp=sharing"],["UPRAK_TIK_X2","https://drive.google.com/drive/folders/1kgTyiEQo46FyyVRcqoOWvh7RDao0ArCG?usp=sharing"],["UPRAK_TIK_X3","https://drive.google.com/drive/folders/1qFAjC5gk5T7pJijTqsHO_onMC9saKima?usp=sharing"],["UPRAK_TIK_X4","https://drive.google.com/drive/folders/1UUuXjAhdq9Io7XGa-zcig0RCritiD8DS?usp=sharing"],["UPRAK_TIK_X5","https://drive.google.com/drive/folders/1YcFEFop-yujIctwxkAeQ3GOpYPXPDpPg?usp=sharing"],["UPRAK_TIK_X6","https://drive.google.com/drive/folders/1r4Vc7pfUKBCbuHL_Y7d0_xpBphvsp21V?usp=sharing"],["UPRAK_TIK_X7","https://drive.google.com/drive/folders/1nmY7V26NeKZB35bne3HMNCpAIlaQ5LXC?usp=sharing"],["UPRAK_TIK_X8","https://drive.google.com/drive/folders/1TRZidS6OvvE81zCtQA4BiTBygJGkzjbE?usp=sharing"],["UPRAK_TIK_X9","https://drive.google.com/drive/folders/1jvncY06xdWvAzokrx5hDpSvWky3zVwA7?usp=sharing"]];
+const T=TOPIK;
+// Ubah ke bentuk {t, o, k, tp} agar sama dengan kode lama
+const Q=SOAL.map(s=>({tp:s[0],t:s[1],o:s.slice(2,6),k:s[6]}));
+let order,ans,flag,cur,user,R,kunci=false,dlg=false;
+const $=id=>document.getElementById(id);
+
+async function mulai(){
+ const n=$("nama").value.trim(),k=$("kelas").value.trim();
+ if(!n||!k){alert("Isi nama dan kelas terlebih dahulu.");return}
+ if(typeof window.kameraMulai!=="function"){alert("Modul kamera belum termuat. Pastikan internet aktif lalu muat ulang halaman.");return}
+ const btn=$("btnMulai");btn.disabled=true;btn.textContent="Menyiapkan kamera...";
+ const okKamera=await window.kameraMulai();
+ btn.disabled=false;btn.textContent="Mulai Mengerjakan";
+ if(!okKamera){alert("Kamera tidak bisa diaktifkan. Izinkan akses kamera di browser, lalu coba lagi. Ujian memerlukan kamera.");return}
+ user={n,k};order=[...Q.keys()].sort(()=>Math.random()-.5);
+ ans=Array(Q.length).fill(-1);flag=Array(Q.length).fill(false);cur=0;
+ $("s1").classList.add("hide");$("s2").classList.remove("hide");render();startGuard();
+}
+function render(anim){
+ const q=Q[order[cur]],done=ans.filter(a=>a>=0).length;
+ $("info").textContent=user.n+" - "+user.k;$("stat").textContent="Terjawab "+done+"/"+Q.length;
+ $("pb").style.width=(done/Q.length*100)+"%";
+ $("no").textContent="SOAL "+(cur+1)+" DARI "+Q.length;$("q").textContent=q.t;
+ $("opts").innerHTML="";
+ q.o.forEach((t,i)=>{const b=document.createElement("button");b.className="opt"+(ans[cur]===i?" on":"");
+  b.innerHTML="<b>"+"ABCD"[i]+"</b><span></span>";b.lastChild.textContent=t;
+  b.onclick=()=>{ans[cur]=i;render()};$("opts").appendChild(b)});
+ $("bp").disabled=cur===0;$("bn").disabled=cur===Q.length-1;
+ $("bf").className="fl"+(flag[cur]?" on":"");
+ $("grid").innerHTML="";
+ Q.forEach((_,i)=>{const b=document.createElement("button");b.textContent=i+1;
+  b.className=(flag[i]?"flag":ans[i]>=0?"done":"")+(i===cur?" cur":"");
+  b.onclick=()=>go(i);$("grid").appendChild(b)});
+ if(anim){const e=$("qb");e.style.animation="none";e.offsetWidth;e.style.animation=""}
+}
+function go(i){if(i<0||i>=Q.length)return;cur=i;render(true)}
+function flg(){flag[cur]=!flag[cur];render()}
+document.addEventListener("keydown",e=>{
+ if($("s2").classList.contains("hide")||kunci||e.ctrlKey||e.metaKey||e.altKey)return;
+ if(e.key==="ArrowRight")go(cur+1);else if(e.key==="ArrowLeft")go(cur-1);
+ else{const i="abcd1234".indexOf(e.key.toLowerCase());if(i>=0){ans[cur]=i%4;render()}}
+});
+let AC,osc,viol=0,aktif=false;
+function fs(){try{const el=document.documentElement,p=(el.requestFullscreen||el.webkitRequestFullscreen).call(el);if(p&&p.catch)p.catch(()=>{})}catch(e){}}
+function startGuard(){
+ viol=0;aktif=true;kunci=false;
+ try{AC=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}
+ fs();
+}
+function sirene(){
+ try{AC.resume();osc=AC.createOscillator();const g=AC.createGain();g.gain.value=.3;osc.type="square";
+  const t=AC.currentTime;for(let i=0;i<300;i++)osc.frequency.setValueAtTime(i%2?950:600,t+i*.4);
+  osc.connect(g);g.connect(AC.destination);osc.start()}catch(e){}
+ if(navigator.vibrate)navigator.vibrate([400,150,400,150,400]);
+}
+function stopAlarm(){try{osc.stop()}catch(e){}osc=null;if(navigator.vibrate)navigator.vibrate(0)}
+function langgar(){
+ if(!aktif||kunci||dlg)return;
+ kunci=true;viol++;
+ if(viol>3){hitung(true);return}
+ const pw=viol===3;
+ $("am").textContent=pw?"Pelanggaran ke-3 (KESEMPATAN TERAKHIR). Panggil guru untuk memasukkan password. Jika pindah tab lagi, nilai otomatis 0.":"Pelanggaran ke-"+viol+". Sisa kesempatan: "+(3-viol)+"x. Jangan pindah tab lagi!";
+ $("pw").classList.toggle("hide",!pw);$("pw").value="";$("pe").textContent="";$("alarm").classList.remove("hide");sirene();
+}
+function buka(){
+ if(viol<3||$("pw").value==="12321"){stopAlarm();$("alarm").classList.add("hide");kunci=false;fs()}
+ else{$("pe").textContent="Password salah!";$("pw").value=""}
+}
+document.addEventListener("visibilitychange",()=>{if(document.hidden)langgar()});
+window.addEventListener("blur",langgar);
+document.addEventListener("fullscreenchange",()=>{if(!document.fullscreenElement)langgar()});
+["copy","cut","paste","contextmenu","selectstart","dragstart"].forEach(t=>document.addEventListener(t,e=>e.preventDefault()));
+document.addEventListener("keydown",e=>{if(((e.ctrlKey||e.metaKey)&&"cvxaups".includes(e.key.toLowerCase()))||e.key==="F12"||e.key==="PrintScreen")e.preventDefault()});
+function ddt(){
+ const m=$("ddm");
+ if(!m.children.length)DRIVE.forEach(d=>{const b=document.createElement("button");b.className="ddi";b.innerHTML="<span></span><span>↗</span>";b.firstChild.textContent=d[0];b.onclick=()=>window.open(d[1],"_blank","noopener");m.appendChild(b)});
+ m.classList.toggle("hide");$("ddb").textContent="Upload ke Google Drive "+(m.classList.contains("hide")?"▾":"▴");
+}
+function predikat(s){return s>=90?"A+":s>=80?"A":s>=70?"B+":s>=60?"B":"C"}
+function selesai(){
+ const k=ans.filter(a=>a<0).length;
+ dlg=true;const ok=confirm(k?k+" soal belum dijawab. Tetap selesaikan?":"Selesaikan dan lihat nilai?");dlg=false;
+ if(ok)hitung();
+}
+function hitung(stop){
+ aktif=false;kunci=false;stopAlarm();$("alarm").classList.add("hide");
+ if(window.kameraBerhenti)window.kameraBerhenti();
+ try{if(document.fullscreenElement)document.exitFullscreen()}catch(e){}
+ const per=T.map(()=>0),tot=T.map(()=>0);let benar=0;
+ order.forEach((oi,p)=>{const t=Q[oi].tp;tot[t]++;if(ans[p]===Q[oi].k){benar++;per[t]++}});
+ if(stop){benar=0;per.fill(0)}
+ const nilai=Math.round(benar/Q.length*100);
+ R={benar,nilai,pred:predikat(nilai),per,tot,pel:viol,stop:!!stop,kam:window.kameraPelanggaran?window.kameraPelanggaran():0};
+ $("s2").classList.add("hide");$("s3").classList.remove("hide");
+ $("who").textContent=user.n+" - Kelas "+user.k;
+ $("pr").textContent="Predikat "+R.pred;$("pr").className="pred "+R.pred[0];
+ $("ben").textContent=stop?"Ujian dihentikan otomatis karena pindah tab berulang kali":"Benar "+benar+" dari "+Q.length+" soal";
+ $("tb").innerHTML="<tr><th>Materi</th><th>Benar</th></tr>"+T.map((t,i)=>"<tr><td>"+t+"</td><td>"+per[i]+" / "+tot[i]+"</td></tr>").join("");
+ let n=0;const iv=setInterval(()=>{n=Math.min(nilai,n+2);$("sc").textContent=n;if(n>=nilai)clearInterval(iv)},25);
+}
+function buatPdf(){
+ if(!window.jspdf){alert("Library PDF belum termuat (butuh internet). Coba lagi.");return}
+ const d=new jspdf.jsPDF(),C={A:[16,185,129],B:[59,130,246],C:[249,115,22]}[R.pred[0]];
+ const fill=c=>d.setFillColor(c[0],c[1],c[2]),tc=c=>d.setTextColor(c[0],c[1],c[2]);
+ fill([190,18,60]);d.rect(0,0,210,40,"F");fill([124,58,237]);d.rect(0,40,210,3,"F");
+ tc([255,255,255]);d.setFont(undefined,"bold");d.setFontSize(20);d.text("HASIL ASESMEN INFORMATIKA",105,19,{align:"center"});
+ d.setFontSize(11);d.setFont(undefined,"normal");d.text("Kelas X  |  Semester 1  |  SMA Telkom Bandung",105,30,{align:"center"});
+ fill([255,241,242]);d.roundedRect(20,54,170,66,6,6,"F");
+ d.setDrawColor(C[0],C[1],C[2]);d.setLineWidth(1.2);d.roundedRect(20,54,170,66,6,6,"S");
+ tc([100,116,139]);d.setFontSize(11);d.setFont(undefined,"bold");d.text("NILAI AKHIR",65,66,{align:"center"});d.text("PREDIKAT",150,66,{align:"center"});
+ tc(C);d.setFontSize(84);d.text(String(R.nilai),65,104,{align:"center"});
+ fill(C);d.roundedRect(122,72,56,36,6,6,"F");tc([255,255,255]);d.setFontSize(36);d.text(R.pred,150,97,{align:"center"});
+ tc([100,116,139]);d.setFontSize(11);d.setFont(undefined,"normal");d.text(R.stop?"Ujian dihentikan otomatis karena pindah tab":"Jawaban benar "+R.benar+" dari "+Q.length+" soal",105,115,{align:"center"});
+ d.setDrawColor(226,232,240);d.setLineWidth(.5);d.roundedRect(20,130,170,46,4,4,"S");
+ [["Nama",user.n],["Kelas",user.k],["Tanggal",new Date().toLocaleString("id-ID")],["Pelanggaran tab",R.pel+"x"]].forEach((r,i)=>{
+  const y=141+i*10;tc([100,116,139]);d.setFont(undefined,"normal");d.text(r[0],28,y);tc([30,41,59]);d.setFont(undefined,"bold");d.text(": "+r[1],72,y)});
+ fill([190,18,60]);d.rect(20,188,3,9,"F");tc([30,41,59]);d.setFontSize(14);d.text("Rincian per Materi",27,195.5);d.setFontSize(11);
+ T.forEach((t,i)=>{const y=212+i*12,p=R.tot[i]?R.per[i]/R.tot[i]:0;
+  tc([30,41,59]);d.setFont(undefined,"normal");d.text(t,22,y);
+  fill([226,232,240]);d.roundedRect(100,y-5,64,6,3,3,"F");
+  if(p>0){fill(C);d.roundedRect(100,y-5,Math.max(6,64*p),6,3,3,"F")}
+  tc([30,41,59]);d.setFont(undefined,"bold");d.text(R.per[i]+" / "+R.tot[i],188,y,{align:"right"})});
+ fill([124,58,237]);d.rect(0,285,210,12,"F");tc([255,255,255]);d.setFontSize(9);d.setFont(undefined,"normal");
+ d.text("Dokumen dihasilkan otomatis oleh sistem Asesmen Informatika Kelas X",105,292,{align:"center"});
+ const nm=user.n.replace(/[^\w]+/g,"_"),kl=user.k.replace(/[^\w]+/g,"-");
+ return [d,"Hasil_Informatika_"+nm+"_"+kl+"_Nilai-"+R.nilai+"_"+R.pred+".pdf"];
+}
+function pdf(){const p=buatPdf();if(p)p[0].save(p[1])}
+</script>
+
+<!-- Modul kamera pengawas (MediaPipe): deteksi wajah dan ponsel -->
+<script type="module">
+import { FilesetResolver, FaceDetector, ObjectDetector } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/+esm";
+
+const video = document.getElementById("preview");
+const kamBox = document.getElementById("kameraKecil");
+const kamOv = document.getElementById("kamOverlay");
+const kamTeks = document.getElementById("kamTeks");
+const WAKTU_TANPA_WAJAH = 6000;   // ms, dibuat lebih longgar agar tidak salah peringatan
+const JEDA_PERINGATAN = 8000;     // ms antar peringatan
+
+let stream = null, faceDet = null, objDet = null, timer = null;
+let tanpaWajahSejak = 0, kamJeda = false, terakhirPeringatan = -1e9, jumlahPeringatan = 0;
+
+async function siapkanModel() {
+  const vision = await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm");
+  faceDet = await FaceDetector.createFromOptions(vision, {
+    baseOptions: { modelAssetPath: "https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite" },
+    runningMode: "VIDEO", minDetectionConfidence: 0.3, minSuppressionThreshold: 0.3
+  });
+  objDet = await ObjectDetector.createFromOptions(vision, {
+    baseOptions: { modelAssetPath: "https://storage.googleapis.com/mediapipe-models/object_detector/efficientdet_lite0/int8/1/efficientdet_lite0.tflite" },
+    runningMode: "VIDEO", scoreThreshold: 0.4, maxResults: 5
+  });
+}
+
+function tampilPeringatan(pesan) {
+  const now = performance.now();
+  if (kamJeda || now - terakhirPeringatan < JEDA_PERINGATAN) return;
+  if (!document.getElementById("alarm").classList.contains("hide")) return; // jangan tumpuk dengan alarm pindah tab
+  terakhirPeringatan = now;
+  kamJeda = true;
+  jumlahPeringatan++;
+  kamTeks.textContent = pesan + " Peringatan ke-" + jumlahPeringatan + ".";
+  kamOv.hidden = false;
+}
+
+document.getElementById("btnKamOke").addEventListener("click", () => {
+  kamOv.hidden = true;
+  kamJeda = false;
+  tanpaWajahSejak = 0;
+});
+
+function periksa() {
+  if (kamJeda || !video.videoWidth || video.readyState < 2 || !faceDet || !objDet) return;
+  const t = performance.now();
+  const wajah = faceDet.detectForVideo(video, t).detections || [];
+  const objek = objDet.detectForVideo(video, t).detections || [];
+  const adaPonsel = objek.some(d => d.categories.some(c => c.categoryName === "cell phone"));
+
+  if (wajah.length === 0) {
+    if (tanpaWajahSejak === 0) tanpaWajahSejak = t;
+    if (t - tanpaWajahSejak > WAKTU_TANPA_WAJAH) {
+      tampilPeringatan("Wajahmu tidak terlihat di kamera. Tetap berada di depan kamera selama ujian.");
+      return;
+    }
+  } else {
+    tanpaWajahSejak = 0;
+  }
+  if (wajah.length > 1) { tampilPeringatan("Terdeteksi lebih dari satu wajah di depan kamera."); return; }
+  if (adaPonsel) { tampilPeringatan("Ponsel terdeteksi di depan kamera. Simpan ponselmu."); }
+}
+
+window.kameraMulai = async function () {
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: "user" } });
+  } catch (e) {
+    return false;
+  }
+  try {
+    video.srcObject = stream;
+    await video.play().catch(() => {});
+    await siapkanModel();
+  } catch (e) {
+    window.kameraBerhenti();
+    return false;
+  }
+  kamBox.hidden = false;
+  tanpaWajahSejak = 0;
+  timer = setInterval(periksa, 400);
+  return true;
+};
+
+window.kameraBerhenti = function () {
+  clearInterval(timer);
+  timer = null;
+  if (stream) stream.getTracks().forEach(t => t.stop());
+  stream = null;
+  video.srcObject = null;
+  kamBox.hidden = true;
+  kamOv.hidden = true;
+  kamJeda = false;
+};
+
+window.kameraPelanggaran = () => jumlahPeringatan;
+</script>
+</body></html>

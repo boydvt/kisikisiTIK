@@ -298,12 +298,12 @@ function langgar(){
  if(!aktif||kunci||dlg)return;
  kunci=true;viol++;
  if(viol>3){hitung(true);return}
- const pw=viol===3;
+ const pw=false;
  $("am").textContent=pw?"Pelanggaran ke-3 (KESEMPATAN TERAKHIR). Panggil guru untuk memasukkan password. Jika pindah tab lagi, nilai otomatis 0.":"Pelanggaran ke-"+viol+". Sisa kesempatan: "+(3-viol)+"x. Jangan pindah tab lagi!";
  $("pw").classList.toggle("hide",!pw);$("pw").value="";$("pe").textContent="";$("alarm").classList.remove("hide");sirene();
 }
 function buka(){
- if(viol<3||$("pw").value==="12321"){stopAlarm();$("alarm").classList.add("hide");kunci=false;fs()}
+ if(true){stopAlarm();$("alarm").classList.add("hide");kunci=false;fs()}
  else{$("pe").textContent="Password salah!";$("pw").value=""}
 }
 document.addEventListener("visibilitychange",()=>{if(document.hidden)langgar()});

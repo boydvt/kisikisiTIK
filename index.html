@@ -69,14 +69,53 @@ table{width:100%;border-collapse:collapse;margin:14px 0;text-align:left}td,th{pa
 .kam-ov img{display:block;width:min(80vw,300px);margin:0 auto 12px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.15)}
 .kam-ov p{color:#111;font-weight:600;margin:0 0 16px}
 @media(max-width:520px){.kam-box{width:120px}}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:14px 0}
+.dg div{background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.9);border-radius:16px;padding:12px}
+.dg b{display:block;font-size:1.6rem}.dg span{font-size:.82rem;color:#525252}
+.tw{overflow-x:auto;border-radius:14px}.tw table{min-width:820px;font-size:.88rem}
+.tw th{background:#111;color:#fff;white-space:nowrap}.tw td{white-space:nowrap}
+.bd{display:inline-block;padding:3px 9px;border-radius:99px;font-size:.78rem;font-weight:700;background:#111;color:#fff}
+.bd.l{background:#fff;color:#111;border:1px dashed #111}
+.livepill{display:inline-flex;align-items:center;gap:8px;background:#111;color:#fff;border-radius:99px;padding:6px 14px;font-weight:800;font-size:.8rem;letter-spacing:.14em}
+.dot{width:9px;height:9px;border-radius:50%;background:#fff;display:inline-block;flex:none}
+.livepill .dot,.live-pill .dot{animation:denyut 1.4s ease-out infinite}
+@keyframes denyut{0%{box-shadow:0 0 0 0 rgba(255,255,255,.75)}70%{box-shadow:0 0 0 9px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+.live-pill{display:inline-flex;align-items:center;gap:7px}
+.hitung{height:4px;background:rgba(0,0,0,.08);border-radius:9px;overflow:hidden;margin:6px 0 4px}
+.hitung i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#404040,#111);border-radius:9px}
+@keyframes turun{from{width:100%}to{width:0}}
+.dg div{transition:transform .2s ease,box-shadow .2s ease}.dg div:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.1)}
+.dg b.flash{animation:sorot .5s ease}
+@keyframes sorot{0%{transform:scale(1)}40%{transform:scale(1.2)}100%{transform:scale(1)}}
+.prog{width:120px;height:8px;background:rgba(0,0,0,.09);border-radius:9px;overflow:hidden;display:inline-block;vertical-align:middle;margin-right:8px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,#404040,#111);border-radius:9px;transition:width .6s ease}
+.tw small{color:#525252;font-weight:700}
+#dIsi tr{transition:background .3s ease}
+#dIsi tr:hover{background:rgba(255,255,255,.75)}
+#dIsi tr.baru{animation:masuk .5s ease}
+#dIsi tr.naik{animation:kedip .9s ease}
+@keyframes masuk{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes kedip{0%,100%{background:transparent}40%{background:rgba(0,0,0,.1)}}
+.waktu{color:#525252;font-variant-numeric:tabular-nums}
+.tunggu{animation:napas 1.6s ease-in-out infinite;color:#525252;font-weight:700}
+@keyframes napas{0%,100%{opacity:.35}50%{opacity:1}}
 </style></head><body>
 
 <div class="card" id="s1">
+<div class="top" style="margin-bottom:6px"><span></span><button class="alt" onclick="bukaGuru()" style="padding:8px 14px;font-size:.9rem">Dashboard Guru</button></div>
 <h1>Asesmen Sumatif Informatika</h1><p class="sub">Kelas X - Semester 1 | 110 soal pilihan ganda</p>
 <label>Nama Lengkap</label><input id="nama" placeholder="Nama kamu">
 <label>Kelas</label><input id="kelas" placeholder="Contoh: X-1">
 <p class="sub" style="margin-top:14px">Materi: Malware &amp; Pemilahan Data, Von Neumann &amp; IPO, Sorting-Stack-Queue, Analisis &amp; Validasi Data, Sistem Komputer. Kamera harus aktif selama ujian.</p>
 <button class="wide" id="btnMulai" onclick="mulai()">Mulai Mengerjakan</button></div>
+
+<div class="card hide" id="sToken">
+<h1>Masukkan Token</h1><p class="sub">Token diberikan oleh guru. Setelah benar, kamera akan aktif dan ujian dimulai.</p>
+<label>Token room</label>
+<input id="tokenSiswa" placeholder="Contoh: 9F3A1C" autocomplete="off" style="text-transform:uppercase" onkeydown="if(event.key==='Enter')mulaiUjian()">
+<p class="err" id="peToken"></p>
+<button class="wide" id="btnToken" onclick="mulaiUjian()">Mulai Ujian</button>
+<button class="wide alt" style="margin-top:8px" onclick="kembaliIsi()">Kembali</button></div>
 
 <div class="card hide" id="s2">
 <div class="top"><b id="info"></b><span class="chip" id="stat"></span></div><div class="bar"><i id="pb"></i></div>
@@ -94,6 +133,30 @@ table{width:100%;border-collapse:collapse;margin:14px 0;text-align:left}td,th{pa
 <button class="wide" onclick="pdf()">Download PDF Hasil</button>
 <p class="sub" style="margin:10px 0">Setelah PDF terunduh, klik tombol di bawah lalu upload file PDF-nya ke folder pengumpulan.</p>
 <button class="wide" onclick="window.open('https://drive.google.com/drive/folders/1I-0gwh8H7m5pgyFb3fKPTS_Pv4npNoEG?usp=sharing','_blank','noopener')">Kumpulkan ke Google Drive ↗</button></div>
+
+<!-- Dashboard guru (dibuka dari tombol di halaman awal, butuh password) -->
+<div class="card hide" id="sGuru">
+<h1>Dashboard Guru</h1><p class="sub">Masukkan password guru untuk membuka pemantauan.</p>
+<label>Password</label><input id="pwGuru" type="password" placeholder="Password guru" autocomplete="off" onkeydown="if(event.key==='Enter')cekGuru()">
+<p class="err" id="peGuru"></p>
+<button class="wide" onclick="cekGuru()">Masuk</button>
+<button class="wide alt" style="margin-top:8px" onclick="kembali()">Kembali</button></div>
+
+<div class="card hide" id="sDash" style="max-width:1100px">
+<div class="top"><div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h1 style="margin:0">Dashboard Guru</h1><span class="livepill"><i class="dot"></i>LIVE</span></div><button class="alt" onclick="kembali()">Keluar</button></div>
+<p class="sub" style="margin:6px 0 10px">Bagikan token ke siswa, lalu pantau progres mereka secara langsung.</p>
+<div class="top" style="margin-bottom:0"><small id="dUpd" class="sub" style="margin:0">menunggu data</small></div>
+<div class="hitung"><i id="dBar"></i></div>
+<div class="top"><input id="dToken" readonly placeholder="Token room" style="max-width:220px;text-transform:uppercase;font-weight:800;letter-spacing:.12em"><button onclick="dBuat()">Refresh token</button></div>
+<p class="err" id="dPesan" style="min-height:1.4em;margin-top:10px"></p>
+<div class="dg" id="dStat">
+<div><b id="dn0">0</b><span>Siswa masuk</span></div>
+<div><b id="dn1">0</b><span>Sedang mengerjakan</span></div>
+<div><b id="dn2">0</b><span>Sudah selesai</span></div>
+<div><b id="dn3">0</b><span>Ada pelanggaran</span></div>
+</div>
+<div class="tw"><table><thead><tr><th>No</th><th>Nama</th><th>Kelas</th><th>Status</th><th>Terjawab</th><th>Pelanggaran tab</th><th>Peringatan kamera</th><th>Nilai</th><th>Update terakhir</th></tr></thead><tbody id="dIsi"></tbody></table></div>
+</div>
 
 <div id="alarm" class="hide"><div class="ab">
 <img src="kucing.gif" alt="Kucing yang sedang menyipitkan mata" style="display:block;width:min(70vw,260px);margin:0 auto 12px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.15)">
@@ -245,17 +308,49 @@ const Q=SOAL.map(s=>({tp:s[0],t:s[1],o:s.slice(2,6),k:s[6]}));
 let order,ans,flag,cur,user,R,kunci=false,dlg=false;
 const $=id=>document.getElementById(id);
 
-async function mulai(){
+// Alur siswa: isi nama & kelas -> masukkan token dari guru -> kamera aktif -> ujian
+let TOKEN_ROOM="",timerKirim=null,ULANG_AKTIF=false;
+function mulai(){
  const n=$("nama").value.trim(),k=$("kelas").value.trim();
  if(!n||!k){alert("Isi nama dan kelas terlebih dahulu.");return}
+ $("s1").classList.add("hide");$("sToken").classList.remove("hide");
+ $("tokenSiswa").value="";$("peToken").textContent="";setTimeout(()=>$("tokenSiswa").focus(),50);
+}
+function kembaliIsi(){$("sToken").classList.add("hide");$("s1").classList.remove("hide")}
+// Kirim progres siswa ke Apps Script (dibaca dashboard guru)
+function kirimProgres(status){
+ if(!user||!TOKEN_ROOM||API_URL.startsWith("ISI_")||!Q)return;
+ const body=JSON.stringify({token:TOKEN_ROOM,nama:user.n,kelas:user.k,terjawab:ans.filter(a=>a>=0).length,total:Q.length,
+  status,pelanggaran:viol,peringatanKamera:window.kameraPelanggaran?window.kameraPelanggaran():0,nilai:status==="selesai"?R.nilai:"",ulang:ULANG_AKTIF});
+ fetch(API_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body}).catch(()=>{});
+}
+async function mulaiUjian(){
+ const n=$("nama").value.trim(),k=$("kelas").value.trim();
+ const tk=$("tokenSiswa").value.trim().toUpperCase();
+ if(!tk){$("peToken").textContent="Masukkan token dari guru.";return}
+ if(API_URL.startsWith("ISI_")){$("peToken").textContent="Server belum diatur (API_URL).";return}
+ $("btnToken").disabled=true;$("peToken").textContent="Memeriksa token...";
+ try{
+  const q="?aksi=masuk&token="+encodeURIComponent(tk)+"&nama="+encodeURIComponent(n)+"&kelas="+encodeURIComponent(k);
+  const h=await (await fetch(API_URL+q)).json();
+  if(!h.ok){$("peToken").textContent="Token salah atau sudah tidak berlaku.";$("btnToken").disabled=false;return}
+  if(h.ulang){
+   const lanjut=confirm("Nama dan kelas ini sudah pernah mengerjakan (nilai sebelumnya: "+h.nilaiLama+").\n\nJika lanjut, nilai sebelumnya AKAN DIRESET dan diganti dengan hasil yang baru.\n\nLanjutkan?");
+   if(!lanjut){$("btnToken").disabled=false;$("peToken").textContent="";return}
+   ULANG_AKTIF=true;
+  }
+ }catch(e){$("peToken").textContent="Gagal terhubung ke server.";$("btnToken").disabled=false;return}
+ TOKEN_ROOM=tk;$("btnToken").disabled=false;$("peToken").textContent="";
+ if(!n||!k){alert("Isi nama dan kelas terlebih dahulu.");return}
  if(typeof window.kameraMulai!=="function"){alert("Modul kamera belum termuat. Pastikan internet aktif lalu muat ulang halaman.");return}
- const btn=$("btnMulai");btn.disabled=true;btn.textContent="Menyiapkan kamera...";
+ const btn=$("btnToken");btn.disabled=true;btn.textContent="Menyiapkan kamera...";
  const okKamera=await window.kameraMulai();
- btn.disabled=false;btn.textContent="Mulai Mengerjakan";
+ btn.disabled=false;btn.textContent="Mulai Ujian";
  if(!okKamera){alert("Kamera tidak bisa diaktifkan. Izinkan akses kamera di browser, lalu coba lagi. Ujian memerlukan kamera.");return}
  user={n,k};order=[...Q.keys()].sort(()=>Math.random()-.5);
  ans=Array(Q.length).fill(-1);flag=Array(Q.length).fill(false);cur=0;
- $("s1").classList.add("hide");$("s2").classList.remove("hide");render();startGuard();
+ $("sToken").classList.add("hide");$("s2").classList.remove("hide");render();startGuard();
+ kirimProgres("mengerjakan");ULANG_AKTIF=false;clearInterval(timerKirim);timerKirim=setInterval(()=>kirimProgres("mengerjakan"),15000);
 }
 function render(anim){
  const q=Q[order[cur]],done=ans.filter(a=>a>=0).length;
@@ -310,8 +405,10 @@ function buka(){
 document.addEventListener("visibilitychange",()=>{if(document.hidden)langgar()});
 window.addEventListener("blur",langgar);
 document.addEventListener("fullscreenchange",()=>{if(!document.fullscreenElement)langgar()});
-["copy","cut","paste","contextmenu","selectstart","dragstart"].forEach(t=>document.addEventListener(t,e=>e.preventDefault()));
-document.addEventListener("keydown",e=>{if(((e.ctrlKey||e.metaKey)&&"cvxaups".includes(e.key.toLowerCase()))||e.key==="F12"||e.key==="PrintScreen")e.preventDefault()});
+// Pembatasan copy/paste tidak berlaku di dashboard guru (agar guru bisa paste token/URL)
+function enGuru(el){return !!(el&&el.closest&&el.closest("#sGuru,#sDash,#sToken"))}
+["copy","cut","paste","contextmenu","selectstart","dragstart"].forEach(t=>document.addEventListener(t,e=>{if(!enGuru(e.target))e.preventDefault()}));
+document.addEventListener("keydown",e=>{if(!enGuru(e.target)&&(((e.ctrlKey||e.metaKey)&&"cvxaups".includes(e.key.toLowerCase()))||e.key==="F12"||e.key==="PrintScreen"))e.preventDefault()});
 function ddt(){
  const m=$("ddm");
  if(!m.children.length)DRIVE.forEach(d=>{const b=document.createElement("button");b.className="ddi";b.innerHTML="<span></span><span>↗</span>";b.firstChild.textContent=d[0];b.onclick=()=>window.open(d[1],"_blank","noopener");m.appendChild(b)});
@@ -332,6 +429,7 @@ function hitung(stop){
  if(stop){benar=0;per.fill(0)}
  const nilai=Math.round(benar/Q.length*100);
  R={benar,nilai,pred:predikat(nilai),per,tot,pel:viol,stop:!!stop,kam:window.kameraPelanggaran?window.kameraPelanggaran():0};
+ clearInterval(timerKirim);kirimProgres("selesai");
  $("s2").classList.add("hide");$("s3").classList.remove("hide");
  $("who").textContent=user.n+" - Kelas "+user.k;
  $("pr").textContent="Predikat "+R.pred;$("pr").className="pred "+R.pred[0];
@@ -367,6 +465,94 @@ function buatPdf(){
  return [d,"Hasil_Informatika_"+nm+"_"+kl+"_Nilai-"+R.nilai+"_"+R.pred+".pdf"];
 }
 function pdf(){const p=buatPdf();if(p)p[0].save(p[1])}
+
+/* ===== Dashboard guru ===== */
+// Isi dengan URL web app Apps Script (berakhiran /exec)
+const API_URL="https://script.google.com/macros/s/AKfycbxQENX8hdDBaMyaofXPSFnLVtgXXLzwd2e7aEWiIJv-3eNqYu0M5I7zebv2sbzhZWu_/exec";
+// Password untuk membuka dashboard; harus sama dengan Script property PASS_GURU di Apps Script
+const PASS_GURU_UI="boy12321";
+let timerGuru=null,tickGuru=null,dLastUpdate=0,dPrev={};
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function bukaGuru(){
+ $("s1").classList.add("hide");$("sGuru").classList.remove("hide");
+ $("pwGuru").value="";$("peGuru").textContent="";setTimeout(()=>$("pwGuru").focus(),50);
+}
+function kembali(){
+ clearInterval(timerGuru);timerGuru=null;clearInterval(tickGuru);tickGuru=null;
+ $("sGuru").classList.add("hide");$("sDash").classList.add("hide");$("s1").classList.remove("hide");
+}
+function cekGuru(){
+ if($("pwGuru").value!==PASS_GURU_UI){$("peGuru").textContent="Password salah.";$("pwGuru").value="";return}
+ $("sGuru").classList.add("hide");$("sDash").classList.remove("hide");
+ dBuat(); // token acak langsung dibuat saat dashboard dibuka
+}
+function dMsg(t,salah){$("dPesan").textContent=t;$("dPesan").style.color=salah?"#b91c1c":"#111"}
+async function dPanggil(p){
+ if(API_URL.startsWith("ISI_")) throw new Error("URL belum diisi");
+ const q=new URLSearchParams({...p,pass:PASS_GURU_UI}).toString();
+ const r=await fetch(API_URL+"?"+q);
+ return r.json();
+}
+async function dBuat(){
+ try{
+  const h=await dPanggil({aksi:"buatRoom"});
+  if(h.error)return dMsg(h.error,true);
+  $("dToken").value=h.token;
+  dMsg("Room dibuat. Token: "+h.token+". Bagikan ke siswa.");
+  dPantau();
+ }catch(e){dMsg("Gagal membuat room. Periksa URL Apps Script dan koneksi.",true)}
+}
+function dPantau(){
+ const t=$("dToken").value.trim().toUpperCase();
+ if(!t)return dMsg("Isi token room dulu.",true);
+ dSiklus(t);
+}
+function dSiklus(t){
+ clearInterval(timerGuru);
+ dAmbil(t);restartBar();
+ timerGuru=setInterval(()=>{dAmbil(t);restartBar()},10000);
+ clearInterval(tickGuru);tickGuru=setInterval(dTick,1000);
+}
+function restartBar(){const b=$("dBar");b.style.animation="none";void b.offsetWidth;b.style.animation="turun 10s linear forwards"}
+function dTick(){
+ const el=$("dUpd");
+ if(!dLastUpdate){el.textContent="menunggu data";return}
+ const s=Math.round((Date.now()-dLastUpdate)/1000);
+ el.textContent="Terakhir diperbarui "+(s<2?"baru saja":s+" detik lalu")+" · "+new Date(dLastUpdate).toLocaleTimeString("id-ID");
+}
+function tween(el,dari,ke){
+ if(dari===ke){el.textContent=ke;return}
+ el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");
+ const mulai=performance.now();
+ (function langkah(t){const k=Math.min(1,(t-mulai)/500);el.textContent=Math.round(dari+(ke-dari)*k);if(k<1)requestAnimationFrame(langkah)})(mulai);
+}
+async function dAmbil(t){
+ try{
+  const h=await dPanggil({aksi:"status",token:t});
+  if(h.error){clearInterval(timerGuru);return dMsg(h.error,true)}
+  dMsg("Terhubung. Diperbarui otomatis setiap 10 detik.");
+  dLastUpdate=Date.now();dTampil(h.peserta);
+ }catch(e){dMsg("Koneksi terputus. Mencoba lagi...",true)}
+}
+function dTampil(ps){
+ const sel=ps.filter(p=>p.status==="selesai").length,pel=ps.filter(p=>Number(p.pelanggaran)>0).length;
+ [ps.length,ps.length-sel,sel,pel].forEach((v,i)=>{const el=$("dn"+i);const dari=Number(el.dataset.n||0);el.dataset.n=v;tween(el,dari,v)});
+ $("dIsi").innerHTML=ps.map((p,i)=>{
+  const kunci=p.nama+"|"+p.kelas, terjawab=Number(p.terjawab)||0;
+  const baru=dPrev[kunci]===undefined, naik=!baru&&terjawab>dPrev[kunci];
+  dPrev[kunci]=terjawab;
+  const pct=p.total?Math.round(terjawab/p.total*100):0, selesai=p.status==="selesai";
+  return `<tr class="${baru?"baru":""} ${naik?"naik":""}">
+  <td>${i+1}</td>
+  <td><b>${esc(p.nama)}</b>${p.percobaan>1?` <span class="bd l">Ulang ×${p.percobaan-1}</span>`:""}</td>
+  <td>${esc(p.kelas)}</td>
+  <td>${selesai?'<span class="bd">✔ Selesai</span>':'<span class="bd live-pill"><i class="dot"></i>Mengerjakan</span>'}</td>
+  <td><span class="prog"><i style="width:${pct}%"></i></span><small>${terjawab} / ${esc(p.total)}</small></td>
+  <td>${esc(p.pelanggaran)}</td><td>${esc(p.peringatanKamera)}</td>
+  <td>${p.nilai===""?"-":"<b>"+esc(p.nilai)+"</b>"}</td>
+  <td class="waktu">${p.update?new Date(p.update).toLocaleString("id-ID",{day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit",second:"2-digit"}):"-"}</td></tr>`;
+ }).join("")||`<tr><td colspan="9" class="tunggu">Menunggu siswa masuk…</td></tr>`;
+}
 </script>
 
 <!-- Modul kamera pengawas (MediaPipe): deteksi wajah dan ponsel -->

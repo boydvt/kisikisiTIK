@@ -95,8 +95,9 @@ table{width:100%;border-collapse:collapse;margin:14px 0;text-align:left}td,th{pa
 <p class="sub" style="margin:10px 0">Setelah PDF terunduh, klik tombol di bawah lalu upload file PDF-nya ke folder pengumpulan.</p>
 <button class="wide" onclick="window.open('https://drive.google.com/drive/folders/1I-0gwh8H7m5pgyFb3fKPTS_Pv4npNoEG?usp=sharing','_blank','noopener')">Kumpulkan ke Google Drive ↗</button></div>
 
-<div id="alarm" class="hide"><div class="ab"><div class="si">!</div>
-<h2 style="font-size:1.5rem;color:#111">KAMU PINDAH TAB!</h2><p id="am"></p>
+<div id="alarm" class="hide"><div class="ab">
+<img src="kucing.gif" alt="Kucing yang sedang menyipitkan mata" style="display:block;width:min(70vw,260px);margin:0 auto 12px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.15)">
+<h2 style="font-size:1.5rem;color:#111">kenapa pindah tab ih, gaboleh</h2><p id="am"></p>
 <input id="pw" type="password" placeholder="Password dari guru" autocomplete="off"><p class="err" id="pe"></p>
 <button class="wide" onclick="buka()">Lanjutkan</button></div></div>
 
@@ -376,7 +377,7 @@ const video = document.getElementById("preview");
 const kamBox = document.getElementById("kameraKecil");
 const kamOv = document.getElementById("kamOverlay");
 const kamTeks = document.getElementById("kamTeks");
-const WAKTU_TANPA_WAJAH = 6000;   // ms, dibuat lebih longgar agar tidak salah peringatan
+const WAKTU_TANPA_WAJAH = 500;    // ms
 const JEDA_PERINGATAN = 8000;     // ms antar peringatan
 
 let stream = null, faceDet = null, objDet = null, timer = null;
@@ -421,13 +422,13 @@ function periksa() {
   if (wajah.length === 0) {
     if (tanpaWajahSejak === 0) tanpaWajahSejak = t;
     if (t - tanpaWajahSejak > WAKTU_TANPA_WAJAH) {
-      tampilPeringatan("Wajahmu tidak terlihat di kamera. Tetap berada di depan kamera selama ujian.");
+      tampilPeringatan("muka kamu gaada di kamera ah");
       return;
     }
   } else {
     tanpaWajahSejak = 0;
   }
-  if (wajah.length > 1) { tampilPeringatan("Terdeteksi lebih dari satu wajah di depan kamera."); return; }
+  if (wajah.length > 1) { tampilPeringatan("kerjain sendiri atau ada orang kyknya dibelakang kamu"); return; }
   if (adaPonsel) { tampilPeringatan("Ponsel terdeteksi di depan kamera. Simpan ponselmu."); }
 }
 
